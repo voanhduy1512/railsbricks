@@ -16,15 +16,16 @@ elif [ "$1" = "-v" ] || [ "$1" = "--versions" ]
   echo
 elif [ "$1" = "--update" ]
   then
-  echo 
+  echo
   echo "----> Getting latest version from Github ..."
-  echo 
-  cd ~/railsbricks/
+  echo
+  DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+  cd $DIR
   git pull https://github.com/nicoschuele/railsbricks.git
   echo
-  echo "----> RailsBricks is up to date." 
+  echo "----> RailsBricks is up to date."
   echo
-  
+
 else
 
   echo
@@ -42,7 +43,7 @@ else
   echo "5) Exit"
   echo -n ": "
   read CHOICE
-  
+
   if [ "$CHOICE" = "1" ]
     then
     rails_create
@@ -55,11 +56,11 @@ else
   elif [ "$CHOICE" = "4" ]
     then
     echo
-    echo "rbricks -n (or rbricks --new):" 
+    echo "rbricks -n (or rbricks --new):"
     echo " - creates a new Rails app with RailsBricks templates"
-    echo "rbricks -D (or rbricks --destroy):"     
+    echo "rbricks -D (or rbricks --destroy):"
     echo " - destroys a Rails app and its RVM gemset"
-    echo "rbricks -r (or rbricks --recreate-db):" 
+    echo "rbricks -r (or rbricks --recreate-db):"
     echo " - drop, migrate and seed the development database"
     echo
   else
